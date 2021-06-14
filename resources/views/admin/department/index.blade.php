@@ -19,12 +19,14 @@
                                 Department Table
                             </div>
                             <div class="card-body">
+                               
+                               
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
                                             <th>SN</th>
                                             <th>Name</th>
-                                            <th>Position</th>
+                                            <th>Description</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -33,7 +35,7 @@
                                         <tr>
                                             <th>SN</th>
                                             <th>Name</th>
-                                            <th>Position</th>
+                                            <th>Description</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -45,13 +47,22 @@
                                             <td>{{$key+1}}</td>
                                             <td>{{$department->name}}</td>
                                             <td>{{$department->description}}</td>
-                                            <td><center><a href="{{route('department.edit',[$department->id])}}">
+                                            <td>
+                                                 @if(isset(Auth()->user()->role->permission['name']['department']['can-edit']))
+                                                <a href="{{route('department.edit',[$department->id])}}">
                                                     <i class="fas fa-edit"></i></td>
-                                                </a></center>
-                                            <td><center><a href="#" data-toggle="modal" data-target="#exampleModalCenter{{$department->id}}">
-                                                    <i class="fas fa-trash"></i>
-
-                                                </a></center>
+                                                </a>
+                                                @else
+                                                <span style="color:red">Access Denied</span>
+                                                 @endif
+                                            <td>
+                                                @if(isset(Auth()->user()->role->permission['name']['department']['can-delete']))
+                                                <a href="#" data-toggle="modal" data-target="#exampleModalCenter{{$department->id}}">
+                                                   <i class="fas fa-trash"></i>
+                                                </a>
+                                                @else
+                                                <span style="color:red">Access Denied</span>
+                                                @endif
                                                <!-- Modal -->
                                                <div class="modal fade" id="exampleModalCenter{{$department->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">

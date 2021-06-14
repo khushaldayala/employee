@@ -1,0 +1,47 @@
+body{
+
+    background-image: url(../Images/background-login-image.jpg);
+
+    background-size: cover;
+
+    color: white !important;
+
+}
+
+
+
+.card{
+
+	margin-top: 7rem;
+
+    box-shadow: 0px 0px 30px 9px black;
+
+    background-color: transparent !important;
+
+}
+
+
+
+.card-header{
+
+    background:white !important;
+
+    color: black !important;
+
+}
+.text{
+    font-size: 37px !important;
+    -webkit-text-stroke-width: 3px !important;
+    -webkit-text-stroke-color: #204987 !important;
+    color: #759cc5 !important;
+    text-align: center;
+  }
+
+form{
+
+	padding: 3rem;
+
+}
+
+
+
